@@ -1,42 +1,118 @@
-*,
-*::before,
-*::after {
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-
-/* Reset some default styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  cursor: none;
-  display: flex;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f5;
+  color: #333;
 }
 
-/* Ensure full height for the main content */
+header {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #ff4b2b;
+}
+
 main {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Section Styling */
+section#home h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+section#home p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* 3D Content Container Styling */
+#threeD-content {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  cursor: pointer;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  position: relative; /* Important for absolute positioning of the cursor */
+  transition: transform 0.3s ease;
 }
 
-/* Styling for the white cursor circle */
-#follower {
-  width: 22px;
-  height: 22px;
-  border-radius: 70%;
-  background: #E2E3E5;
+#threeD-content:hover {
+  transform: scale(1.05);
+}
+
+/* Custom Cursor Styling */
+#cursor {
+  width: 20px;
+  height: 20px;
+  background-color: #ff4b2b;
+  border-radius: 50%;
   position: absolute;
-  margin: -16px 0 0 -16px;
-  z-index: 1000;
+  pointer-events: none;
+  transition: transform 0.1s ease;
+  transform: scale(1);
 }
 
-#spline-background {
-  position: relative; 
-  z-index: 1; 
+body:hover #cursor {
+  transform: scale(1.2);
+}
+
+#cursor::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 75, 43, 0.8);
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+/* Animation for the shape created on click */
+@keyframes shapeAnimation {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1.5);
+      opacity: 0;
+  }
+}
+
+div[style*="background-color: red;"] {
+  animation: shapeAnimation 3s forwards;
 }
